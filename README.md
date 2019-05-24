@@ -22,10 +22,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4.1.2 find getStyleLoaders - add
 
 4.1.3 
-    {
-        loader: require.resolve('less-loader'),
-        options: { javascriptEnabled: true }, // compiles Less to CSS
-      },
+     {
+            loader: require.resolve('less-loader'),
+            options: { javascriptEnabled: true }
+        },
       
 5 npm i less less-loader
 
