@@ -1,5 +1,44 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Steps for install react redux
+1 npx create-react-app web
+
+1.1 cd web
+
+2 run eject //package.json
+
+2.1.1 * error run eject - remove package-lock.json
+
+3 npm install
+
+//install less file
+
+4 edit folder config/webpack.config.js
+
+4.1 find cssRegex
+
+4.1.1  const cssRegex = /\.css$/ to const cssRegex = /\.(css|less)$/
+
+4.1.2 find getStyleLoaders - add
+
+4.1.3 
+    {
+        loader: require.resolve('less-loader'),
+        options: { javascriptEnabled: true }, // compiles Less to CSS
+      },
+      
+5 npm i less less-loader
+
+5.1 App.css change to App.less
+
+6 npm i redux react-redux redux-thunk
+
+7 * unable to npm start
+
+7.1 * remove package-lock.json and node-modules, reinstall npm install
+
+Notes: * - optional
+
 ## Available Scripts
 
 In the project directory, you can run:
