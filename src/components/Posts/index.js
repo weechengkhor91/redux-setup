@@ -1,10 +1,16 @@
 import React, { Component, Fragment } from 'react'
 import './index.css'
-import {fetchPosts} from '../../../../../cra-redux/cra-redux/src/actions/fetchPosts'
+import {fetchPosts} from '../../actions/fetchPosts'
 import {connect} from 'react-redux'
 class Posts extends Component {
     componentWillMount() {
         this.props.fetchPosts();
+    }
+    componentWillReceiveProps(nextProps, nextContext) {
+       // console.log('receiveProps',nextProps)
+        if(nextProps.news){
+          this.props.posts.unshift(nextProps.news)
+        }
     }
 
     render() {
@@ -27,6 +33,7 @@ class Posts extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-        posts: state.posts.items
+        posts: state.posts.items,
+    news: state.posts.item
 })
 export default connect(mapStateToProps, {fetchPosts})(Posts)

@@ -1,4 +1,6 @@
 import React, {Component, Fragment} from 'react'
+import {connect} from 'react-redux'
+import {newPosts }from "../../actions/fetchPosts";
 
 class PostsForm extends Component {
     state = {
@@ -17,21 +19,24 @@ class PostsForm extends Component {
             title: this.state.title,
             body: this.state.body,
         }
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(posts)
-        })
-            .then(res => res.json())
-            .then(posts => console.log(posts))
+        this.props.newPosts(posts)
+        // fetch('https://jsonplaceholder.typicode.com/posts', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(posts)
+        // })
+        //     .then(res => res.json())
+        //     .then(posts => console.log(posts))
     }
+
     render(){
         const {title, body} = this.state
         return(
           <Fragment>
                 <h3>Post Form</h3>
+              {this.props.posts}
               <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
                       <div className="form-label">Title</div>
@@ -48,4 +53,4 @@ class PostsForm extends Component {
     }
 }
 
-export default PostsForm
+export default connect(null, {newPosts})(PostsForm)
